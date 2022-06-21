@@ -3,13 +3,11 @@
 
 Require Import Recdef.
 Require Import Arith.Wf_nat.
-Require Import Omega.
+Require Import micromega.Lia.
 Require Export RegExp.Utility.
 Require Export RegExp.Definitions.
 Require Export RegExp.Boolean.
 Require Export RegExp.Concat.
-
-Unset Standard Proposition Elimination Names.
 
 (** ** Lemmas for Star *)
 
@@ -84,7 +82,7 @@ Proof.
         induction s0.
           intro H'. elim H'. auto. 
           simpl. intro H'. intro H''. discriminate H''. 
-      specialize(Hlen_s s' H12).  omega.
+      specialize(Hlen_s s' H12).  lia.
     specialize(IHs s'' Hltof r H14).
     destruct IHs as [ss' [IH1 [IH2 IH3]]].
     exists (s' :: ss').  split.

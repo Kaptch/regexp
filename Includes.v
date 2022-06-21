@@ -3,7 +3,7 @@
 
 Require Import Recdef.
 Require Import Arith.Wf_nat.
-Require Import Omega.
+Require Import micromega.Lia.
 Require Export RegExp.Utility.
 Require Export RegExp.Definitions.
 Require Export RegExp.Boolean.
@@ -201,10 +201,10 @@ Proof.
     assert(Hltof: ltof string str_length (s''0 ++ s'')%string s).
      unfold ltof.  rewrite H01.  rewrite H11.
      repeat rewrite str_length_append.
-     cut(str_length s'0 > 0).  intro Hs'0.  omega.
+     cut(str_length s'0 > 0).  intro Hs'0.  lia.
      induction s'0.
        elim H12.  auto.  
-       simpl.  omega.
+       simpl.  lia.
     assert(Hy: (Star a ++ b) ~== (s''0 ++ s'')).
       eapply matches_Cat.  auto.  auto.
     assert(Hy': x ~== (s''0 ++ s'')%string).
@@ -246,10 +246,10 @@ Proof.
     assert(Hltof: ltof string str_length (s' ++ s'0)%string s).
       unfold ltof.  rewrite H01.  rewrite H11.
       repeat rewrite str_length_append.
-      cut(str_length s''0 > 0).  intro Hs''0.  omega.
+      cut(str_length s''0 > 0).  intro Hs''0.  lia.
       induction s''0.  
         elim H12.  auto.  
-        simpl.  omega.
+        simpl.  lia.
     assert(Hy: (b ++ Star a) ~== (s' ++ s'0)).
       eapply matches_Cat.  auto.  auto.
     assert(Hy': x ~== (s' ++ s'0)%string).
